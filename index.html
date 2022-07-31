@@ -8,13 +8,10 @@
 </head>
 <body>
     <h1>
-        Welcome to my library. 
+        Welcome to the library. 
     </h1>
     <p>
-        What you want to read?
-    </p>
-    <p>
-        Or do you want to add some other books?
+        Do you want to add some other books?
     </p>
         <label for="titlename">Name of Title:  </label>
         <input type="text" id="titlename" name="booktitle"><br>
@@ -26,6 +23,12 @@
         <input type="number" id="pages" name="numberpages"><br>
 
         <button onclick="new Book(document.getElementById('titlename').value,document.getElementById('authorAuth').value,parseInt(document.getElementById('pages').value,10))">Add book</button>
+
+        <div id="booktable">
+            <table>
+
+            </table>
+        </div>
 </body>
 <script>
     let myLibrary=[];
@@ -43,11 +46,40 @@
         this.changeStatus = ()=>{
             this.status="already read."
         }
+        showtable();
     }
+
     function addBooktoLibrary(book){
         myLibrary.push(book)
     }
+    function showtable(){
+        let t=document.createElement("table");
+        let d=document.getElementById("booktable");
+        var lastChild=d.lastElementChild;
+        d.removeChild(lastChild);
+        d.appendChild(t);
 
+        for (var i = 0; i < myLibrary.length; i++){
+            let r=document.createElement("tr");
+            t.appendChild(r)
+            let a=document.createElement("th");
+            r.appendChild(a);
+            a.innerText=myLibrary[i].title
+            let b=document.createElement("th");
+            r.appendChild(b);
+            b.innerText=myLibrary[i].author
+            let c=document.createElement("th");
+            r.appendChild(c);
+            c.innerText=myLibrary[i].pages
+            let d=document.createElement("th");
+            r.appendChild(d);
+            d.innerText=myLibrary[i].status
+            let innerbutton=document.createElement("button");
+
+            
+        }
+    }
     new Book("You don't know JS yet","Kyle Simpsons",200);
+
 </script>
 </html>
