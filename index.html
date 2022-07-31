@@ -16,13 +16,27 @@
     <p>
         Or do you want to add some other books?
     </p>
+        <label for="titlename">Name of Title:  </label>
+        <input type="text" id="titlename" name="booktitle"><br>
+        <br>
+        <label for="titleAuth">Name of Author:  </label>
+        <input type="text" id="authorAuth" name="authortitle"><br>
+        <br>
+        <label for="pages">Number of pages:  </label> 
+        <input type="number" id="pages" name="numberpages"><br>
+
+        <button onclick="new Book(document.getElementById('titlename').value,document.getElementById('authorAuth').value,parseInt(document.getElementById('pages').value,10))">Add book</button>
 </body>
 <script>
+    let myLibrary=[];
+
     function Book(title,author,pages){
+        
         this.title=title;
         this.author=author;
         this.pages=pages;
-        this.status="not read yet"
+        this.status="not read yet";
+        addBooktoLibrary(this);
         this.info=()=>{
             return `${this.title} by ${this.author}, ${this.pages} pages, ${this.status}.`
         }
@@ -30,6 +44,10 @@
             this.status="already read."
         }
     }
-    var b1=new Book("You don't know JS yet","Kyle Simpsons",200);
+    function addBooktoLibrary(book){
+        myLibrary.push(book)
+    }
+
+    new Book("You don't know JS yet","Kyle Simpsons",200);
 </script>
 </html>
