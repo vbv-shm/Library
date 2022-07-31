@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+</head>
+<body>
+    <h1>
+        Welcome to my library. 
+    </h1>
+    <p>
+        What you want to read?
+    </p>
+    <p>
+        Or do you want to add some other books?
+    </p>
+</body>
+<script>
+    function Book(title,author,pages){
+        this.title=title;
+        this.author=author;
+        this.pages=pages;
+        this.status="not read yet"
+        this.info=()=>{
+            return `${this.title} by ${this.author}, ${this.pages} pages, ${this.status}.`
+        }
+        this.changeStatus = ()=>{
+            this.status="already read."
+        }
+    }
+    var b1=new Book("You don't know JS yet","Kyle Simpsons",200);
+</script>
+</html>
